@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pokemon/features/splash/splash.dart';
 import '../infrastructure/common/presentation/localization/app_localization_delegate.dart';
 import '../infrastructure/core/core/app_build_config.dart';
 import '../infrastructure/core/modules/feature_resolver.dart';
@@ -19,7 +20,9 @@ class AppStart {
 
   /// The order of initialization matters, otherwise you will end up with
   /// an exception because of gitIt registration.
-  get resolvers => <FeatureResolver>[];
+  get resolvers => <FeatureResolver>[
+    SplashScreenResolver(),
+  ];
 
   Future<void> startApp() async {
     WidgetsFlutterBinding.ensureInitialized();

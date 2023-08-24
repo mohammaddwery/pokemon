@@ -32,6 +32,7 @@ flutter:
 
   assets:
     - assets/subtitles/
+    - assets/images/
 
   fonts:
     - family: RedHatDisplay
