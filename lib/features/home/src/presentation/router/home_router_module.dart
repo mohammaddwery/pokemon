@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon/infrastructure/common/presentation/navigator/home_navigator.dart';
 import '../../../../../infrastructure/core/modules/router_module.dart';
-import '../screens/splash_screen.dart';
+import '../screens/home_screen.dart';
 
-class SplashRoutes {
-  SplashRoutes._();
 
-  static const String root = '/';
-}
-
-class SplashRouterModule implements RouterModule {
+class HomeRouterModule implements RouterModule {
   @override
   Map<String, MaterialPageRoute> getRoutes(RouteSettings settings) =>
       <String, MaterialPageRoute> {
-        SplashRoutes.root: MaterialPageRoute(
-          builder: (_) => const SplashScreen(),
+        HomeRoutes.home: MaterialPageRoute(
+          builder: (_) => const HomeScreen(),
           settings: settings,
         ),
       };

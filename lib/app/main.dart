@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokemon/features/splash/splash.dart';
+import '../features/home/src/home_resolver.dart';
 import '../infrastructure/common/presentation/localization/app_localization_delegate.dart';
 import '../infrastructure/core/core/app_build_config.dart';
 import '../infrastructure/core/modules/feature_resolver.dart';
@@ -22,6 +23,7 @@ class AppStart {
   /// an exception because of gitIt registration.
   get resolvers => <FeatureResolver>[
     SplashScreenResolver(),
+    HomeResolver(),
   ];
 
   Future<void> startApp() async {
