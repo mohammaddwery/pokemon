@@ -34,7 +34,10 @@ class GeneralAppbar extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if(hasBackButton) InkWell(onTap: () => Navigator.of(context).pop(), child: const Icon(Icons.arrow_back, size: AppSizes.s24,),),
+          if(hasBackButton) InkWell(
+            onTap: () => Navigator.of(context).pop(),
+            child: const Icon(Icons.arrow_back, size: AppSizes.s24, color: Colors.white,),
+          ),
           SizedBox(width: hasBackButton ? AppSizes.s8 : AppSizes.s16,),
           Text(
             AppLocalization.of(context).translate(titleKey),

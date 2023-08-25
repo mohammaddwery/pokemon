@@ -5,4 +5,5 @@ class AppSubtitlesKeys {
   static const String goToPage1 = 'go_to_page_1';
   static const String goToPage2 = 'go_to_page_2';
   static const String clearText = 'clear_text';
+  static const String animations = 'animations';
 }

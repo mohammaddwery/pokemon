@@ -13,6 +13,7 @@ class TextFieldContent extends StatelessWidget {
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
         color: AppColors.greyShade900,
       ),
+      textAlign: TextAlign.center,
     );
   }
 }
