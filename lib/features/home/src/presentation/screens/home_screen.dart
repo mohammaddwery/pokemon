@@ -5,6 +5,8 @@ import 'package:pokemon/infrastructure/core/presentation/widgets/app_base_widget
 import '../../../../../infrastructure/common/presentation/helpers/app_subtitles_keys.dart';
 import '../../../../../infrastructure/common/presentation/styles/app_colors.dart';
 import '../../../../../infrastructure/common/presentation/styles/app_sizes.dart';
+import '../../../../../infrastructure/core/injection/app_injector.dart';
+import 'home_screen_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,6 +16,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends BaseWidgetState<HomeScreen> {
+
+  final bloc = AppInjector.I.get<HomeScreenBloc>();
+  static const int textFieldMaxLength = 40;
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget buildContent(BuildContext context) {
@@ -46,9 +57,9 @@ class _HomeScreenState extends BaseWidgetState<HomeScreen> {
       textInputAction: TextInputAction.done,
       textAlign: TextAlign.start,
       textAlignVertical: TextAlignVertical.center,
-      onChanged: (value) {
-        // TODO
-      },
+      controller: bloc.textEditingController,
+      onChanged: bloc.onTextFieldChanged,
+      maxLength: textFieldMaxLength,
       style: textTheme.titleMedium?.copyWith(
         color: Colors.grey.shade900,
         height: 1.2,
@@ -67,6 +78,7 @@ class _HomeScreenState extends BaseWidgetState<HomeScreen> {
 
   Widget buildTextFieldContent() {
     return StreamBuilder<String?>(
+      stream: bloc.textFieldContentController.stream,
       builder: (context, snapshot) {
         return TextFieldContent(snapshot.data);
       },
@@ -75,9 +87,7 @@ class _HomeScreenState extends BaseWidgetState<HomeScreen> {
 
   Widget buildClearTextButton() {
     return ElevatedButton.icon(
-      onPressed: () {
-        // TODO
-      },
+      onPressed: bloc.onClearTextClicked,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -95,9 +105,7 @@ class _HomeScreenState extends BaseWidgetState<HomeScreen> {
     return buildNavigationButton(
       titleKey: AppSubtitlesKeys.goToPage1,
       background: AppColors.secondary,
-      onClicked: () {
-        // TODO
-      },
+      onClicked: () => bloc.onPageOneNavigationButtonClicked(context),
     );
   }
 
@@ -105,9 +113,7 @@ class _HomeScreenState extends BaseWidgetState<HomeScreen> {
     return buildNavigationButton(
       titleKey: AppSubtitlesKeys.goToPage2,
       background: AppColors.primary,
-      onClicked: () {
-        // TODO
-      },
+      onClicked: () => bloc.onPageTwoNavigationButtonClicked(context),
     );
   }
 

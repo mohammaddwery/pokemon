@@ -4,6 +4,7 @@ import 'package:pokemon/infrastructure/common/presentation/navigator/home_naviga
 import '../../../../infrastructure/core/core/app_build_config.dart';
 import '../../../../infrastructure/core/injection/injector.dart';
 import '../../../../infrastructure/core/modules/injection_module.dart';
+import '../presentation/screens/home_screen_bloc.dart';
 
 class HomeInjectionModule implements InjectionModule {
   @override
@@ -17,7 +18,8 @@ class HomeInjectionModule implements InjectionModule {
     // DOMAIN
 
     // PRESENTATION
-      .registerFactory<HomeNavigator>(() => AppHomeNavigator(),)
+      ..registerFactory<HomeScreenBloc>(() => HomeScreenBloc(),)
+      ..registerFactory<HomeNavigator>(() => AppHomeNavigator(),)
     ;
   }
 }
