@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokemon/features/splash/splash.dart';
 import '../features/home/src/home_resolver.dart';
 import '../infrastructure/common/presentation/localization/app_localization_delegate.dart';
+import '../infrastructure/common/presentation/styles/app_colors.dart';
 import '../infrastructure/core/core/app_build_config.dart';
 import '../infrastructure/core/modules/feature_resolver.dart';
 import '../infrastructure/core/modules/injection_module.dart';
@@ -45,6 +47,12 @@ class AppStart {
     await AppInjectionComponent.instance.registerModules(
       config: buildConfig,
       modules: injections,
+    );
+
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: AppColors.secondary,
+      ),
     );
 
     await runZonedGuarded<Future<void>>(
