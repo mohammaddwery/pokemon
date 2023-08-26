@@ -1,16 +1,24 @@
 # pokemon
 
-Pokemon App.
+Sample demonstrates the next points:
+- The knowledge and experience in Flutter.
+- The ability to write a clean and readable code.
+- The ability to analyze problems and find solutions in a fast way.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Splash screen with Flutter logo.
+- Home screen, contains:
+  a. Text field where the user can enter the input.
+  b. Text widget, with a value changed based on the TextField input changed.
+  c. Clear text button, to clear the text in the Text and TextField widgets.
+  d. Go to page1 button.
+  e. Go to page 2 button.
+- Animations screen, contains:
+  a. Text at the top which contains the same value in the previous screen.
+  b. Animated shape.
+  c. Shape selector which determinate the animated shape.
+- Pokemons screen, contains:
+  a. pokemons listing using [Pokémon API](https://pokeapi.co).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
