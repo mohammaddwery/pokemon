@@ -20,6 +20,7 @@ class HomeInjectionModule implements InjectionModule {
     // PRESENTATION
       ..registerFactory<HomeScreenBloc>(() => HomeScreenBloc(
         animationsPageNavigator: injector.get(),
+        pokemonNavigator: injector.get(),
       ),)
       ..registerFactory<HomeNavigator>(() => AppHomeNavigator(),)
     ;

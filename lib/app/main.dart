@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pokemon/features/splash/splash.dart';
 import '../features/animations_page/animations_page_resolver.dart';
 import '../features/home/src/home_resolver.dart';
+import '../features/pokemon/src/pokemon_resolver.dart';
 import '../infrastructure/common/presentation/localization/app_localization_delegate.dart';
 import '../infrastructure/common/presentation/styles/app_colors.dart';
 import '../infrastructure/core/core/app_build_config.dart';
@@ -28,6 +29,7 @@ class AppStart {
     SplashScreenResolver(),
     HomeResolver(),
     AnimationsPageResolver(),
+    PokemonResolver(),
   ];
 
   Future<void> startApp() async {
