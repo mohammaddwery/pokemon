@@ -16,6 +16,8 @@ import 'my_app.dart';
 import 'di/app_component.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'resolvers/app_resolver.dart';
+
 
 Future<void> main() => AppStart(AppBuildConfig()).startApp();
 
@@ -26,6 +28,7 @@ class AppStart {
   /// The order of initialization matters, otherwise you will end up with
   /// an exception because of gitIt registration.
   get resolvers => <FeatureResolver>[
+    AppResolver(),
     SplashScreenResolver(),
     HomeResolver(),
     AnimationsPageResolver(),

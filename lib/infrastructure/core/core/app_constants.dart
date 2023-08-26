@@ -5,5 +5,5 @@ const List<Locale> appSupportedLocales = [
 ];
 
 class AppConstants {
-  static const String pokemonImageBaseUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
+
 }

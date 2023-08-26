@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pokemon/features/pokemon/src/core/pokemon_constants.dart';
+import '../../../../../infrastructure/core/presentation/bloc/crud_data_bloc_handler.dart';
 import '../../../../../infrastructure/core/presentation/bloc/ui_state.dart';
 import '../../../../../infrastructure/core/presentation/helpers/behavior_subject_component.dart';
 import '../../data/models/pokemon.dart';
+import '../../data/resources/remote/pokemon_api_provider.dart';
 
-class PokemonsScreenBloc {
-  PokemonsScreenBloc() {
+class PokemonsScreenBloc with CrudDataBlocHandler {
+  final PokemonApiProvider _pokemonApiProvider;
+  PokemonsScreenBloc({
+    required PokemonApiProvider pokemonApiProvider,
+  }): _pokemonApiProvider = pokemonApiProvider {
     _listenScrollController();
-    fetchResults(skip: 0,);
+    fetchPokemons(skip: 0,);
   }
 
   final pokemonsController = BehaviorSubjectComponent<UiState<List<Pokemon>>?>();
@@ -18,15 +24,23 @@ class PokemonsScreenBloc {
     scrollController.addListener(_onScroll);
   }
 
-  fetchResults({int? skip,}) {
-    // TODO: Remove this dummy data
-    pokemonsController.setValue(UiState.success(adaptJsonToBookings(pokemons)));
-  }
+  fetchPokemons({int? skip}) => handleCrudPagingDataList<Pokemon>(
+    exceptionTag: 'PokemonsScreenBloc fetchPokemons()',
+    skip: skip,
+    onData: (loadMore) => this.loadMore = loadMore,
+    limit: PokemonConstants.pokemonsListingLimit,
+    getCurrentState: pokemonsController.getValue,
+    setCurrentState: pokemonsController.setValue,
+    crudDataList: (calculatedSkip) async => await _pokemonApiProvider.getPokemons(
+      offset: calculatedSkip,
+      limit: PokemonConstants.pokemonsListingLimit,
+    ),
+  );
 
   void _onScroll() {
     if (_isBottom && loadMore) {
       loadMore = false;
-      fetchResults();
+      fetchPokemons();
     }
   }
 
@@ -34,6 +48,7 @@ class PokemonsScreenBloc {
     return scrollController.position.atEdge && (scrollController.position.pixels != 0);
   }
 
+  @override
   dispose() {
     pokemonsController.dispose();
     scrollController.dispose();

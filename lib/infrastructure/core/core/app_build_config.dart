@@ -1,7 +1,7 @@
 
 class AppBuildConfig {
   final Map<String, dynamic> configs = {
-    "apiBaseUrlKey": ""  // TODO
+    "apiBaseUrl": "https://pokeapi.co/api/v2/",
   };
   static const String apiBaseUrlKey = 'apiBaseUrl';
 }
