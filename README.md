@@ -9,16 +9,20 @@ Sample demonstrates the next points:
 ## Features
 
 - Splash screen with Flutter logo.
+  
 - Home screen, contains:
-  a. Text field where the user can enter the input.
-  b. Text widget, with a value changed based on the TextField input changed.
-  c. Clear text button, to clear the text in the Text and TextField widgets.
-  d. Go to page1 button.
-  e. Go to page 2 button.
+  1. Text field where the user can enter the input.
+  2. Text widget, with a value changed based on the TextField input changed.
+  3. Clear text button, to clear the text in the Text and TextField widgets.
+  4. Go to page1 button.
+  5. Go to page 2 button.
+     
 - Animations screen, contains:
-  a. Text at the top which contains the same value in the previous screen.
-  b. Animated shape.
-  c. Shape selector which determinate the animated shape.
+  1. Text at the top which contains the same value in the previous screen.
+  2. Animated shape.
+  3. Shape selector which determinate the animated shape.
+     
 - Pokemons screen, contains:
-  a. pokemons listing using [Pokémon API](https://pokeapi.co).
+  1. pokemons listing using [Pokémon API](https://pokeapi.co).
+
 
