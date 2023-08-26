@@ -13,4 +13,11 @@ class AppColors {
   static const Color greyShade500 = Color(0xFF9E9E9E);
   static const Color greyShade400 = Color(0xFFBDBDBD);
   static const Color red = Colors.red;
+
+  static BoxShadow get cardShadow => BoxShadow(
+    color: Colors.black.withOpacity(0.15),
+    blurRadius: 1,
+    spreadRadius: 2,
+    offset: const Offset(0.0, 2.0,),
+  );
 }

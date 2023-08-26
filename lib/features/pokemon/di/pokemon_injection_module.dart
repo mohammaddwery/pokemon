@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:pokemon/features/pokemon/src/presentation/screens/pokemons_screen_bloc.dart';
+
 import '../../../../infrastructure/core/core/app_build_config.dart';
 import '../../../../infrastructure/core/injection/injector.dart';
 import '../../../../infrastructure/core/modules/injection_module.dart';
@@ -17,6 +19,7 @@ class PokemonInjectionModule implements InjectionModule {
     // DOMAIN
 
     // PRESENTATION
+      ..registerFactory<PokemonsScreenBloc>(() => PokemonsScreenBloc(),)
       ..registerFactory<PokemonNavigator>(() => AppPokemonNavigator(),)
     ;
   }
